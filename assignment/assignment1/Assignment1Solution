@@ -1,0 +1,185 @@
+given task:Restore the given dump in mongodb
+mongorestore -d video  //home/knoldus/Documents/assignment/assignment1/dump/video 
+
+command:db.movieDetails.find()
+{ "_id" : ObjectId("569190ca24de1e0ce2dfcd4f"), "title" : "Once Upon a Time in the West", "year" : 1968, "rated" : "PG-13", "released" : ISODate("1968-12-21T05:00:00Z"), "runtime" : 175, "countries" : [ "Italy", "USA", "Spain" ], "genres" : [ "Western" ], "director" : "Sergio Leone", "writers" : [ "Sergio Donati", "Sergio Leone", "Dario Argento", "Bernardo Bertolucci", "Sergio Leone" ], "actors" : [ "Claudia Cardinale", "Henry Fonda", "Jason Robards", "Charles Bronson" ], "plot" : "Epic story of a mysterious stranger with a harmonica who joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad.", "poster" : "http://ia.media-imdb.com/images/M/MV5BMTEyODQzNDkzNjVeQTJeQWpwZ15BbWU4MDgyODk1NDEx._V1_SX300.jpg", "imdb" : { "id" : "tt0064116", "rating" : 8.6, "votes" : 201283 }, "tomato" : { "meter" : 98, "image" : "certified", "rating" : 9, "reviews" : 54, "fresh" : 53, "consensus" : "A landmark Sergio Leone spaghetti western masterpiece featuring a classic Morricone score.", "userMeter" : 95, "userRating" : 4.3, "userReviews" : 64006 }, "metacritic" : 80, "awards" : { "wins" : 4, "nominations" : 5, "text" : "4 wins & 5 nominations." }, "type" : "movie" }
+{ "_id" : ObjectId("569190cb24de1e0ce2dfcd50"), "title" : "A Million Ways to Die in the West", "year" : 2014, "rated" : "R", "released" : ISODate("2014-05-30T04:00:00Z"), "runtime" : 116, "countries" : [ "USA" ], "genres" : [ "Comedy", "Western" ], "director" : "Seth MacFarlane", "writers" : [ "Seth MacFarlane", "Alec Sulkin", "Wellesley Wild" ], "actors" : [ "Seth MacFarlane", "Charlize Theron", "Amanda Seyfried", "Liam Neeson" ], "plot" : "As a cowardly farmer begins to fall for the mysterious new woman in town, he must put his new-found courage to the test when her husband, a noto
+
+Q1) Which of the choices below is the title of a movie from the year 2013 that is rated PG-13 and won no awards? Please query the video.movieDetails collection to find the answer?
+
+Ans:db.movieDetails.find({"year":2013,"rated":"PG-13","awards.wins":0},{"title":1,"_id":0}).pretty();
+{ "title" : "A Decade of Decadence, Pt. 2: Legacy of Dreams" }
+
+
+
+Q2) Using the video.movieDetails collection, which of the queries below would produce output documents that resemble the following. There can be more than one answer. 
+
+NOTE: We are not asking you to consider specifically which documents would be output from the queries below, but rather what fields the output documents would contain.
+
+{ "title" : "P.S. I Love You" }
+{ "title" : "Love Actually" }
+{ "title" : "Shakespeare in Love" }
+
+
+
+
+a) db.movieDetails.find({title: ""}, {title: 1})
+b) db.movieDetails.find({title: "Muppets from Space"}, {title: 1})
+c) db.movieDetails.find({}, {title: 1})
+d) db.movieDetails.find({}, {title})
+e) db.movieDetails.find({}, {title: 1, _id: 0})
+f) db.movieDetails.find({year: 1964}, {title: 1, _id: 0})
+
+Ans:Option e and f will have output in the mentioned format where _id:0, i.e do not show _id attribute.
+
+a) > db.movieDetails.find({title: ""}, {title: 1})
+> 
+> 
+
+
+b) > db.movieDetails.find({title: "Muppets from Space"}, {title: 1})
+{ "_id" : ObjectId("569190cf24de1e0ce2dfcd73"), "title" : "Muppets from Space" }
+> 
+>
+c){ "_id" : ObjectId("569190ca24de1e0ce2dfcd4f"), "title" : "Once Upon a Time in the West" }
+{ "_id" : ObjectId("569190cb24de1e0ce2dfcd50"), "title" : "A Million Ways to Die in the West" }
+{ "_id" : ObjectId("569190cb24de1e0ce2dfcd51"), "title" : "Wild Wild West" }
+{ "_id" : ObjectId("569190cb24de1e0ce2dfcd52"), "title" : "West Side Story" }
+{ "_id" : ObjectId("5692a23f24de1e0ce2dfd692"), "title" : "Tora pou fevgo ap' ti zoi" }
+{ "_id" : ObjectId("569190cb24de1e0ce2dfcd53"), "title" : "Slow West" }
+{ "_id" : ObjectId("569190cb24de1e0ce2dfcd54"), "title" : "An American Tail: Fievel Goes West" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd55"), "title" : "Red Rock West" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd56"), "title" : "How the West Was Won" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd57"), "title" : "Journey to the West" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd58"), "title" : "West of Memphis" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd59"), "title" : "Star Wars: Episode IV - A New Hope" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd5a"), "title" : "Star Wars: Episode V - The Empire Strikes Back" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd5b"), "title" : "Star Wars: Episode VI - Return of the Jedi" }
+{ "_id" : ObjectId("569190cc24de1e0ce2dfcd5c"), "title" : "Star Wars: Episode I - The Phantom Menace" }
+{ "_id" : ObjectId("569190cd24de1e0ce2dfcd5d"), "title" : "Star Wars: Episode III - Revenge of the Sith" }
+{ "_id" : ObjectId("569190cd24de1e0ce2dfcd5e"), "title" : "Star Trek" }
+{ "_id" : ObjectId("569190cd24de1e0ce2dfcd5f"), "title" : "Star Wars: Episode II - Attack of the Clones" }
+{ "_id" : ObjectId("569190cd24de1e0ce2dfcd60"), "title" : "Star Trek Into Darkness" }
+{ "_id" : ObjectId("569190cd24de1e0ce2dfcd61"), "title" : "Star Trek: First Contact" }
+
+d)db.movieDetails.find({}, {title})
+2016-04-10T20:41:07.312+0530 E QUERY    SyntaxError: Unexpected token }
+
+e) db.movieDetails.find({}, {title: 1, _id: 0})
+{ "title" : "Once Upon a Time in the West" }
+{ "title" : "A Million Ways to Die in the West" }
+{ "title" : "Wild Wild West" }
+{ "title" : "West Side Story" }
+{ "title" : "Tora pou fevgo ap' ti zoi" }
+{ "title" : "Slow West" }
+{ "title" : "An American Tail: Fievel Goes West" }
+{ "title" : "Red Rock West" }
+{ "title" : "How the West Was Won" }
+{ "title" : "Journey to the West" }
+{ "title" : "West of Memphis" }
+{ "title" : "Star Wars: Episode IV - A New Hope" }
+{ "title" : "Star Wars: Episode V - The Empire Strikes Back" }
+{ "title" : "Star Wars: Episode VI - Return of the Jedi" }
+{ "title" : "Star Wars: Episode I - The Phantom Menace" }
+{ "title" : "Star Wars: Episode III - Revenge of the Sith" }
+{ "title" : "Star Trek" }
+{ "title" : "Star Wars: Episode II - Attack of the Clones" }
+{ "title" : "Star Trek Into Darkness" }
+{ "title" : "Star Trek: First Contact" }
+
+ f)db.movieDetails.find({year: 1964}, {title: 1, _id: 0})
+{ "title" : "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb" }
+{ "title" : "Before Hollywood, There Was Fort Lee, N.J." }
+{ "title" : "FX 18" }
+{ "title" : "Aa bakudan" }
+{ "title" : "Mit csinált Felséged 3-tól 5-ig?" }
+{ "title" : "Xie jian mu dan hong" }
+{ "title" : "Mars na Drinu" }
+{ "title" : "Heshtje që flet" }
+{ "title" : "El rapto de T.T." }
+{ "title" : "Abflug LH 646" }
+{ "title" : "I Am Cuba" }
+{ "title" : "Tintin et les oranges bleues" }
+{ "title" : "KK 17" }
+> 
+
+
+Q3) How many movies list "Sweden" second in the the list of countries.
+ans: db.movieDetails.find({"countries.1":"Sweden"},{"title":1,"_id":0})
+{ "title" : "The Girl with the Dragon Tattoo" }
+{ "title" : "Dallas: J.R. Returns" }
+{ "title" : "If I Want to Whistle, I Whistle" }
+{ "title" : "Burma VJ: Reporter i et lukket land" }
+{ "title" : "Hin helgu vé" }
+{ "title" : "Au Hasard Balthazar" }
+
+ "title" : "Au Hasard Balthazar" }
+> db.movieDetails.find({"countries.1":"Sweden"},{"title":1,"_id":0}).count();
+6
+
+
+Q4) How many documents in our video.movieDetails collection list just the following two genres: "Comedy" and "Crime" with "Comedy" listed first.
+ans:db.movieDetails.find({"genres.0":"Comedy","genres.1":"Crime","genres": { $size:2, $all: ["Comedy", "Crime"] }},{"title":1,"genres":1,"_id":0}).count();
+20
+
+
+Q5) As a follow up to the previous question, how many documents in the video.movieDetails collection list both "Comedy" and "Crime" as genres regardless of how many other genres are listed?
+Ans:Answer 5) > db.movieDetails.find({ $and: [{"genres":"Comedy"},{"genres":"Crime"}]},{"title":1,"genres":1,"_id":0}).count();
+56
+
+Q6)Suppose you wish to update the value of the "plot" field for one document in our "movieDetails" collection to correct a typo. Which of the following update operators and modifiers would you need to use to do this?
+
+$sort
+$slice
+$each
+$unset
+$addToSet
+$push
+$position
+$rename
+$set
+Ans:$set
+Q7) Suppose our movie details documents are structured so that rather than contain an awards field that looks like this:
+
+"awards" : {
+    "wins" : 56,
+    "nominations" : 86,
+    "text" : "Won 2 Oscars. Another 56 wins and 86 nominations."
+}
+they are structured with an awards field as follows:
+
+"awards" : {
+    "oscars" : [
+        {"award": "bestAnimatedFeature", "result": "won"},
+        {"award": "bestMusic", "result": "won"},
+        {"award": "bestPicture", "result": "nominated"},
+        {"award": "bestSoundEditing", "result": "nominated"},
+        {"award": "bestScreenplay", "result": "nominated"}
+    ],
+    "wins" : 56,
+    "nominations" : 86,
+    "text" : "Won 2 Oscars. Another 56 wins and 86 nominations."
+}
+What query would we use in the Mongo shell to return all movies in the video.movieDetails collection that either won or were nominated for a best picture Oscar? You may assume that an award will appear in the oscars array only if the movie won or was nominated. 
+
+db.movieDetails.find({ $and :[{"awards.oscars.award": "bestPicture"},{ $or :[{ "awards.oscars.result":"won"}, {"awards.oscars.result": "nominated"}]}]},{"name":1})
+
+
+Q8) Write an update command that will remove the "tomato.consensus" field for all documents matching the following criteria:
+
+The number of imdb votes is less than 10,000
+The year for the movie is between 2010 and 2013 inclusive
+The tomato.consensus field is null
+How many documents required an update to eliminate a "tomato.consensus" field?
+
+Ans:db.movieDetails.remove({"imdb.votes": { $lt :10000} },{"year":{ $lte : 2013 , $gte : 2010 }} , {"tomato.consensus" : null } );
+WriteResult({ "nRemoved" : 1273 })
+> 
+
+
+
+
+
+
+
+

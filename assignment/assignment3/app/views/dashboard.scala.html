@@ -1,0 +1,55 @@
+@import b3.vertical.fieldConstructor
+@()(implicit flash: Flash)
+@main("Dashboard") {
+<h1 style="color: red!important;">Welcome admin</h1>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#awards" id="award">Awards/Certificates</a></li>
+    <li><a data-toggle="tab" href="#lang" id="language">Languages</a></li>
+    <li><a data-toggle="tab" href="#assignment" id="assignments">Assignments</a></li>
+    <li><a data-toggle="tab" href="#proglang" id="proglangs">Programming Languages</a></li>
+    <li><a data-toggle="tab" href="#internDt" id="interndetails">Intern Details</a></li>
+    <li><a href="@routes.Application.logout">Sign out</a></li>
+
+</ul>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <h3>HOME</h3>
+        <p>Some content.</p>
+    </div>
+    <div id="awards" class="tab-pane fade">
+        <div id="awardmenu">
+
+        </div>
+
+    </div>
+
+    <div id="lang" class="tab-pane fade">
+        <div id="langmenu">
+
+        </div>
+
+    </div>
+
+    <div id="assignment" class="tab-pane fade">
+        <div id="assignmentmenu">
+
+        </div>
+
+    </div>
+
+    <div id="proglang" class="tab-pane fade">
+        <div id="proglangmenu">
+
+        </div>
+
+    </div>
+    <div id="internDt" class="tab-pane fade">
+        <div id="internmenu">
+
+        </div>
+
+</div>
+    </div>
+}

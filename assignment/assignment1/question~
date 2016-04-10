@@ -1,0 +1,83 @@
+Restore the given dump in mongodb
+
+Q1) Which of the choices below is the title of a movie from the year 2013 that is rated PG-13 and won no awards? Please query the video.movieDetails collection to find the answer?
+
+
+Q2) Using the video.movieDetails collection, which of the queries below would produce output documents that resemble the following. There can be more than one answer. 
+
+NOTE: We are not asking you to consider specifically which documents would be output from the queries below, but rather what fields the output documents would contain.
+
+{ "title" : "P.S. I Love You" }
+{ "title" : "Love Actually" }
+{ "title" : "Shakespeare in Love" }
+
+
+
+
+a) db.movieDetails.find({title: ""}, {title: 1})
+b) db.movieDetails.find({title: "Muppets from Space"}, {title: 1})
+c) db.movieDetails.find({}, {title: 1})
+d) db.movieDetails.find({}, {title})
+e) db.movieDetails.find({}, {title: 1, _id: 0})
+f) db.movieDetails.find({year: 1964}, {title: 1, _id: 0})
+
+
+Q3) How many movies list "Sweden" second in the the list of countries.
+
+Q4) How many documents in our video.movieDetails collection list just the following two genres: "Comedy" and "Crime" with "Comedy" listed first.
+
+Q5) As a follow up to the previous question, how many documents in the video.movieDetails collection list both "Comedy" and "Crime" as genres regardless of how many other genres are listed?
+
+
+Q6)Suppose you wish to update the value of the "plot" field for one document in our "movieDetails" collection to correct a typo. Which of the following update operators and modifiers would you need to use to do this?
+
+$sort
+$slice
+$each
+$unset
+$addToSet
+$push
+$position
+$rename
+$set
+
+Q7) Suppose our movie details documents are structured so that rather than contain an awards field that looks like this:
+
+"awards" : {
+    "wins" : 56,
+    "nominations" : 86,
+    "text" : "Won 2 Oscars. Another 56 wins and 86 nominations."
+}
+they are structured with an awards field as follows:
+
+"awards" : {
+    "oscars" : [
+        {"award": "bestAnimatedFeature", "result": "won"},
+        {"award": "bestMusic", "result": "won"},
+        {"award": "bestPicture", "result": "nominated"},
+        {"award": "bestSoundEditing", "result": "nominated"},
+        {"award": "bestScreenplay", "result": "nominated"}
+    ],
+    "wins" : 56,
+    "nominations" : 86,
+    "text" : "Won 2 Oscars. Another 56 wins and 86 nominations."
+}
+What query would we use in the Mongo shell to return all movies in the video.movieDetails collection that either won or were nominated for a best picture Oscar? You may assume that an award will appear in the oscars array only if the movie won or was nominated. 
+
+
+
+Q8) Write an update command that will remove the "tomato.consensus" field for all documents matching the following criteria:
+
+The number of imdb votes is less than 10,000
+The year for the movie is between 2010 and 2013 inclusive
+The tomato.consensus field is null
+How many documents required an update to eliminate a "tomato.consensus" field?
+
+
+
+
+
+
+
+
+

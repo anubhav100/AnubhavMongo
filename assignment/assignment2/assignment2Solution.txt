@@ -1,0 +1,69 @@
+Instructions:
+-------------
+1. Download assignment.json file from <addr> and save it as student.json
+
+2. Use mongoimport command to import that json data to your db
+    - Do ./mongoimport --help
+    - mongoimport -d <ur db name>  -c <collection name> < students.json
+
+command:knoldus@knoldus:~$ mongoimport --db assignment --collection coll --file /home/knoldus/Documents/assignment/assignment2/student.json
+
+
+
+
+
+Assignments:
+------------
+1. Insert document in students collection with name "Knoldus Noida" and scores are 
+		
+                  [{"type" : "exam",
+			"score" : 1.4
+		 },{
+			"type" : "quiz",
+			"score" : 11.7
+		},{
+			"type" : "homework",
+			"score" : 6.67
+		},{
+			"type" : "assignment",
+			"score" : 35.87
+		}]
+command:db.coll.insert({"name" : "noida knoldus", "scores" : [{"type" : "exam", "score" : 1.4}, { "type" : "quiz", "score" : 11.7 },{ "type" : "homework", "score" : 6.67 },{"type" : "assignment", "score" : 35.87 }] } )
+WriteResult({ "nInserted" : 1 })
+> coll.find()
+
+
+2. Find document/documents of person having name "Giselan Levin"
+command:
+ db.coll.find({"name" : "Gisela Levin"})
+{ "_id" : 19, "name" : "Gisela Levin", "scores" : [ { "type" : "exam", "score" : 44.51211101958831 }, { "type" : "quiz", "score" : 0.6578497966368002 }, { "type" : "homework", "score" : 93.36341655949683 }, { "type" : "homework", "score" : 49.43132782777443 } ] }
+{ "_id" : 133, "name" : "Gisela Levin", "scores" : [ { "type" : "exam", "score" : 15.88727528055548 }, { "type" : "quiz", "score" : 91.49884857295594 }, { "type" : "homework", "score" : 16.56032169309347 }, { "type" : "homework", "score" : 1.704262924559419 } ] }
+
+
+3. Find document/documents of person having name "Giselan Levin" and display (project) only scores list.
+command:
+ db.coll.find({"name" : "Gisela Levin"},{_id:0,name:0})
+{ "scores" : [ { "type" : "exam", "score" : 44.51211101958831 }, { "type" : "quiz", "score" : 0.6578497966368002 }, { "type" : "homework", "score" : 93.36341655949683 }, { "type" : "homework", "score" : 49.43132782777443 } ] }
+
+
+4. Change name of person "Knoldus Noida" to "Noida Knoldus"
+command:db.coll.update({"name" :"noida knoldus"},{$set:{"name" : "knoldus noida"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+ 
+
+5. Add new score {type: "assignment", score: 60} to all documents belonging to person having name "Giselan Levin".
+   hint: This is bulk or multi document update.
+db.coll.update({"name" :"Gisela Levin"},{$set:{"type" : "assignment","score" :60}},{multi:true})
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
+
+6. Find document with score of type assignment.
+command:db.coll.find({"type" : "assignment"},{_id:0,name:0})
+{ "scores" : [ { "type" : "exam", "score" : 44.51211101958831 }, { "type" : "quiz", "score" : 0.6578497966368002 }, { "type" : "homework", "score" : 93.36341655949683 }, { "type" : "homework", "score" : 49.43132782777443 } ], "type" : "assignment", "score" : 60 }
+{ "scores" : [ { "type" : "exam", "score" : 15.88727528055548 }, { "type" : "quiz", "score" : 91.49884857295594 }, { "type" : "homework", "score" : 16.56032169309347 }, { "type" : "homework", "score" : 1.704262924559419 } ], "type" : "assignment", "score" : 60 }
+
+
+7. Remove document of person haven name "Noida Knoldus"
+db.coll.remove({"name" :"knoldus noida"})
+WriteResult({ "nRemoved" : 1 })
+> 
+

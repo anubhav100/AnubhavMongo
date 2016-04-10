@@ -1,0 +1,42 @@
+Instructions:
+-------------
+1. Download assignment.json file from <addr> and save it as student.json
+
+2. Use mongoimport command to import that json data to your db
+    - Do ./mongoimport --help
+    - mongoimport -d <ur db name>  -c <collection name> < students.json
+
+
+
+
+
+
+Assignments:
+------------
+1. Insert document in students collection with name "Knoldus Noida" and scores are 
+		
+                  [{"type" : "exam",
+			"score" : 1.4
+		 },{
+			"type" : "quiz",
+			"score" : 11.7
+		},{
+			"type" : "homework",
+			"score" : 6.67
+		},{
+			"type" : "assignment",
+			"score" : 35.87
+		}]
+
+2. Find document/documents of person having name "Giselan Levin"
+
+3. Find document/documents of person having name "Giselan Levin" and display (project) only scores list.
+
+4. Change name of person "Knoldus Noida" to "Noida Knoldus" 
+
+5. Add new score {type: "assignment", score: 60} to all documents belonging to person having name "Giselan Levin".
+   hint: This is bulk or multi document update.
+
+6. Find document with score of type assignment.
+
+7. Remove document of person haven name "Noida Knoldus"

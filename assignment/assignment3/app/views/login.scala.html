@@ -1,0 +1,36 @@
+@import controllers._
+@import b3.vertical.fieldConstructor
+@(loginForm:Form[Login])(implicit message:Messages,flash:Flash)
+@main("Login Form"){
+<div class="container" xmlns:border="http://www.w3.org/1999/xhtml" xmlns:color="http://www.w3.org/1999/xhtml"
+     xmlns:colour="http://www.w3.org/1999/xhtml" xmlns:colour="http://www.w3.org/1999/xhtml"
+     xmlns:colour="http://www.w3.org/1999/xhtml"/>
+<div class="jumbotron"style="border:2px solid blue">
+    <h1 style="text-align:center;color:red!important;">MONGO DB ASSIGNMENT </h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <h1 class="text-center login-title">Sign in</h1>
+                @b3.form(routes.Application.dashboard) {
+                @b3.email( loginForm("email"), '_label -> "Email", 'placeholder -> "example@mail.com" )
+                @b3.password( loginForm("password"), '_label -> "Password", 'placeholder -> "Password" )
+                @b3.submit('class -> "btn btn-default"){ Sign in }
+
+                <div class="account-wall">
+                    <label class="checkbox pull-left">
+                        <input type="checkbox" value="remember-me">
+                        Remember me
+                    </label>
+                    <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+
+                </div>
+
+                <a href="@routes.Application.registration()" class="text-center new-account">Create an account </a>
+                <p>@flash.get("error")</p>
+
+            </div>
+        </div>
+    </div>
+    }
+    }
